@@ -190,6 +190,7 @@ addEventListener("DOMContentLoaded", (e)=>{
     let plantilla = "";
     for (let i = 0; i < DB.length; i++){
         plantilla += `<tr>
+                        <th>  ${i} </th>
                          <th>${DB[i].nombre}</th>
                          <th>${DB[i].edad}</th>
                          <th>${DB[i].teacher}</th>
@@ -213,6 +214,7 @@ myInformacion.addEventListener("submit" , e=>{
     for (let i = 0; i < DB.length; i++) {
 
         plantilla += `<tr>
+                            <th>  ${i} </th>
                             <th>${DB[i].nombre}</th>
                             <th>${DB[i].edad}</th>
                             <th>${DB[i].teacher}</th>
