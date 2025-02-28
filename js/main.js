@@ -173,12 +173,58 @@
 // console.log(a)
 
 const myInformacion = document.querySelector("#myInformacion");
+const myTabla = document.querySelector("#myTabla");
+
+let DB;
+if(localStorage.getItem("formualario")){
+    
+    DB = JSON.parse(localStorage.getItem("formualario"));
+    
+} else{
+    
+    DB = [];
+}
+
+
+addEventListener("DOMContentLoaded", (e)=>{
+    let plantilla = "";
+    for (let i = 0; i < DB.length; i++){
+        plantilla += `<tr>
+                         <th>${DB[i].nombre}</th>
+                         <th>${DB[i].edad}</th>
+                         <th>${DB[i].teacher}</th>
+                     <tr>`;
+    
+
+    }
+    myTabla.innerHTML = plantilla;
+}
+)
 
 myInformacion.addEventListener("submit" , e=>{
     e.preventDefault();
-    let data = Object.fromEntries(new FormData(e.target))
-    console.log(data)
+    let data = Object.fromEntries(new FormData(e.target));
+    DB.push(data);
+    localStorage.setItem("formulario", JSON.stringify(DB));
+    
+    console.log(data);
+    let plantilla = "";
 
+    for (let i = 0; i < DB.length; i++) {
+
+        plantilla += `<tr>
+                            <th>${DB[i].nombre}</th>
+                            <th>${DB[i].edad}</th>
+                            <th>${DB[i].teacher}</th>
+                        <tr>`;
+        
+        
+    }
+    
+    myTabla.innerHTML = plantilla; 
+    localStorage.setItem("formulario", JSON.stringify(DB));
 
 });
+
+
 
